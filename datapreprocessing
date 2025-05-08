@@ -1,0 +1,19 @@
+data_dir = "data/traffic_signs/"
+img_size = 64
+X, y = [], []
+
+for label in os.listdir(data_dir):
+    path = os.path.join(data_dir, label)
+    for img_name in os.listdir(path):
+        try:
+            img = cv2.imread(os.path.join(path, img_name))
+            img = cv2.resize(img, (img_size, img_size))
+            X.append(img)
+            y.append(int(label))
+        except Exception as e:
+            continue
+
+X = np.array(X) / 255.0
+y = np.array(y)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
