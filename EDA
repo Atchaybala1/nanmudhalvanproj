@@ -1,0 +1,6 @@
+unique, counts = np.unique(y, return_counts=True)
+plt.bar(unique, counts)
+plt.title("Class Distribution")
+plt.xlabel("Class")
+plt.ylabel("Frequency")
+plt.show()
